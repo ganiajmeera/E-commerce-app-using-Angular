@@ -1,0 +1,7 @@
+<div class="row row-cols-md-4 " >
+    @for (p of appService.products | search:appService.searchQuery; track $index) {
+        <app-product-card [product]="p" [isLoggedIn]="isLoggedIn" 
+        (addProductToCartEvent)="addTocart($event)"[inCart]="appService.incart(p)"
+        (removeFromCartEvent)="removeFromCart($event)"></app-product-card>
+    }
+</div>

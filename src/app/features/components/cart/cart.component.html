@@ -1,0 +1,10 @@
+<div class="container" > 
+    <h3>Total: {{totals}}</h3> <form [formGroup]='cartForm' >
+         <!-- Here we cannot use ngFor on cartForm directly, we get controls does not exist on AbstractControl during the build process, so we need to create a getter in the component and use controls on that getter --> 
+          <div formArrayName='products' *ngFor="let product of products.controls; let i=index"> 
+            <div class="card" [formGroupName]='i' > <h5 class="card-header"> {{products.controls[i].value.name}} </h5> 
+                <div class="card-body"> <div class="row"> <div class="col-3"> <img [src]="products.controls[i].value.img" alt="" class="img-thumbnail"> </div> 
+                <div class="col-9"> <p class="card-text"></p> Price: {{products.controls[i].value.price}} <br> 
+                    Quantity: <input type="number" min="1" formControlName='quantity'> <br> Total: {{products.controls[i].value.price * products.controls[i].value.quantity}} <hr> 
+                    <a class="btn btn-danger" (click)='removeProduct(i)' >Remove</a> </div> </div> </div> </div> </div> </form> <h3>Total: {{totals}}</h3> 
+                    <button class="btn btn-success" (click)='checkOut()' >Check Out</button> </div>

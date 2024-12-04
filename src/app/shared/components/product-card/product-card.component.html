@@ -1,0 +1,15 @@
+<div class="card" style="width: 18rem;">
+    <img [src]="product.img" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.description | elipsis: 30 }}</p>
+      <a [routerLink]="['product', product.id]" class="btn btn-primary">More Details</a>
+      @if(isLoggedIn){
+        @if(inCart){
+          <a class="btn btn-danger btn-sm"(click)="removeFromCart()"><strong>Remove From cart</strong></a>
+        }@else {
+          <a class="btn btn-success btn-sm" (click)="addTocart()"><strong>Add to cart</strong></a>
+        }
+      }
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="row row-cols-md-4">
+    @for (p of cProducts | search :appService.searchQuery; track $index) {
+        <app-product-card [product]="p" [isLoggedIn]="isLoggedIn"[inCart]="appService.incart(p)"></app-product-card>
+    }
+</div>
+
